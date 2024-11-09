@@ -9,18 +9,21 @@ class Tarea{
 
 class ListaTareas{
   constructor(){
-    this.lista = []
+    this.lista = [];
   }
 
   mostraLista(){
-   this.lista.forEach(element,index => {
-    
-    alert(`${index}) ${element.nombre}\n
-      ${element.descripcion}\n
-      ${element.fecha}\n
-      ${element.completada}\n
-      ====================`)
-   })
+    if(this.lista.length === 0){
+      alert(`No hay tareas en la lista`)
+    }else{
+      this.lista.forEach((element,index) => {
+        alert(`${index}) Nombre: ${element.nombre}\n
+          Descripcion: ${element.descripcion}\n
+          Fecha:${element.fecha}\n
+          Completada:${element.completada}\n
+          ====================`)
+      })
+    }
   }
 
   agregar(tarea){
@@ -28,7 +31,7 @@ class ListaTareas{
   }
 
   completar(pos){
-   this.lista.forEach(element,index =>{
+   this.lista.forEach((element,index) =>{
     if(pos === index){
       element.completada = true;
     } 
@@ -36,7 +39,7 @@ class ListaTareas{
   }
 
   eliminar(pos){
-    this.lista.forEach(element,index =>{
+    this.lista.forEach((element,index) =>{
       if(pos === index){
         this.lista.splice(index,1);
       }
@@ -53,39 +56,44 @@ function nuevaTarea(listaTarea){
 }
 
 lista = new ListaTareas();
-let usuario = 0;
-while(usuario =! 5){
+
+function usuario(){
+  let usuario;
   let pos;
-  usuario = Number(prompt(`Que deseas hacer?\n
-    1)Ingresar una nueva tarea\n
-    2)Mostrar toda la lista\n
-    3)Completar una tarea\n
-    4)Eliminar la tarea\n
-    5)Salir)\n
-    Porfavor interactua unicamente ingresando un numero valido.`))
-  
-  switch(usuario){
-    case 1:
-      nuevaTarea(lista);
-    break;
-    case 2:
-      lista.mostraLista();
-    break;
-    case 3:
-      alert(`Es recomendado ver la lista completa para saber la posicion de la tarea quiere buscar.`)
-      pos = Number(prompt(`Ingrese el numero de la posicion de la tarea`))
-      lista.completar(pos)
-    break;
-    case 4:
-      alert(`Es recomendado ver la lista completa para saber la posicion de la tarea quiere buscar.`)
-      pos = Number(prompt(`Ingrese el numero de la posicion de la tarea`))
-      lista.eliminar(pos)
-    break;
-    case 5:
-     alert(`Usted decidio salir, adios.`)
-    break;
-    default:
-      alert(`Por favor ingrese un valor valido.`)
-    break;
-  }
+  do{
+    usuario = Number(prompt(`Que deseas hacer?\n
+      1)Ingresar una nueva tarea\n
+      2)Mostrar toda la lista\n
+      3)Completar una tarea\n
+      4)Eliminar la tarea\n
+      5)Salir\n
+      Porfavor interactua unicamente ingresando un numero valido.`))
+    
+    switch(usuario){
+      case 1:
+        nuevaTarea(lista);
+      break;
+      case 2:
+        lista.mostraLista();
+      break;
+      case 3:
+        alert(`Es recomendado ver la lista completa para saber la posicion de la tarea quiere buscar.`)
+        pos = Number(prompt(`Ingrese el numero de la posicion de la tarea`))
+        lista.completar(pos)
+      break;
+      case 4:
+        alert(`Es recomendado ver la lista completa para saber la posicion de la tarea quiere buscar.`)
+        pos = Number(prompt(`Ingrese el numero de la posicion de la tarea`))
+        lista.eliminar(pos)
+      break;
+      case 5:
+       alert(`Usted decidio salir, adios.`)
+      break;
+      default:
+        alert(`Por favor ingrese un valor valido.`)
+      break;
+    }
+  }while(usuario != 5)
 }
+
+usuario();
