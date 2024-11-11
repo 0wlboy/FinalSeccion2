@@ -1,9 +1,12 @@
 
 
-
+/**@function numeros funcion que le pide adivinar un numero entre 1 y 100 */
 function numeros(){
+  /**@global computadora almacena el numero generado por computadora */
   let computadora;
+  /**@global usuario almacena el numero generado por el usuario*/
   let usuario;
+  /**@global intentos almacena el numero de intentos que el usuario tiene para advinar el numero */
   let intentos = 6;
 
   window.alert(`Bienvenido a adivine el numero! Tiene un total de 6 intentos para adivinar el numero de 1 a 100 que la computadora generara, si adivina el numero correcto el juego termina y usted gana. Buena suerte!`);
