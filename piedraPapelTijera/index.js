@@ -21,7 +21,7 @@ function piedraPapelTijera(){
   //continua el bucle si decision sigue siendo SI
     while(decision === 'SI'){
       //Continua el bucle si alguno de los jugadores aun no llega a dos victorias
-      while((player1<2) || (player2 < 2)){
+      while((player1<2) && (player2 < 2)){
         //Al iniciar el ciclo se incrementa una nueva ronda
         ++rondas;
         //se regresa x a 0
