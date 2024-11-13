@@ -1,15 +1,39 @@
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adivina numero</title>
-</head>
-
-  <main>
-    
-  </main>
-  <footer>
-    <script src="index.js"></script>
-  </footer>   
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <title>Adivina numero</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body >
+    <main>
+      <div class="m-8 border-solid border-2 border-sky-500/30 rounded-lg">
+        <div class="flex flex-col justify-center items-center m-8 gap-3">
+          <h1 class="text-3xl font-bold underline">
+            Adivina el numero
+          </h1>
+          <p class="text-lg text-center">
+            Las reglas son estas: La computadora generara un numero alazar entre 1 y 100 y tendras que adivinarlo, tienes 6 intentos
+          </p>
+          <h2 class="text-2xl">
+            Intentos: <span id="intentos" class="font-bold">6</span>
+          </h2>
+          <div class="flex gap-2">
+            <form id="forma">
+              <input id="inputUsuario" type="text" placeholder="Introduce tu numero" class="input input-bordered w-full max-w-xs" />
+            </form>
+            <button id="boton" class="btn btn-neutral">Enviar</button>
+          </div>
+          <h3>Si desea reiniciar sus intentos presione</h3>
+          <button id="reiniciar" class="btn btn-neutral">Reiniciar</button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <script src="./index.js"></script>
+    </footer>   
+  </body>
 </html>

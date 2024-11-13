@@ -1,28 +1,53 @@
 
 
-/**@function numeros funcion que le pide adivinar un numero entre 1 y 100 */
-function numeros(){
-  /**@global computadora almacena el numero generado por computadora */
-  let computadora;
-  /**@global usuario almacena el numero generado por el usuario*/
-  let usuario;
-  /**@global intentos almacena el numero de intentos que el usuario tiene para advinar el numero */
-  let intentos = 6;
-
-  window.alert(`Bienvenido a adivine el numero! Tiene un total de 6 intentos para adivinar el numero de 1 a 100 que la computadora generara, si adivina el numero correcto el juego termina y usted gana. Buena suerte!`);
-  
-  computadora = Math.floor(Math.random() * (100 + 1));
-
-  while(intentos > 0){
-    usuario = Number(prompt(`Tienes un total de ${intentos} intentos.\nIngresa un numero valido de entre el 1 y 100.`))
-    if(usuario === computadora){
-      window.alert(`Lograste acertar el numero, ganaste!`)
-      return
-    }else{
-      --intentos;
-    }
+/**
+ * @function introducir funcion que evalua si el numero dado por el usuario es igual al de la computadora
+ * @param {number} computadora numero generado por computadora
+ */
+function introducir(computadora){  
+  let usuario = Number(document.getElementById('inputUsuario').value)
+  if (usuario === computadora){
+    alert(`Lograste adivinar el numero que es ${computadora}`)
+  }else{
+    alert(`Numero incorrecto`)
+    --intentos;
+    document.getElementById('intentos').innerHTML = intentos
   }
-  window.alert(`No lograste adivinar el numero que era ${computadora}. Lo sentimos mucho`);
 }
 
-numeros();
+/**
+ * @function comprobar comprueba cuantos intentos quedan, en caso de llegar a 0 se desactiva el boton
+ * @param {number} intentos el numero de intentos que tiene el usuario
+ */
+function comprobar(intentos){
+  if (intentos < 1){
+    boton.style.opacity = 10;
+    boton.disabled = true;
+    alert(`Te quedaste sin intentos, el numero a adivinar era ${computadora}`)
+  }
+}
+
+let computadora = Math.floor(Math.random() * (100 + 1));
+let intentos = 6;
+document.getElementById('intentos').innerHTML = intentos
+const boton =   document.getElementById('boton')
+const reiniciar = document.getElementById('reiniciar')
+
+boton.onclick = function (){
+  introducir(computadora)
+  comprobar(intentos)
+  document.getElementById('forma').reset()};
+
+reiniciar.onclick = function (){
+    if (boton.disabled === true){
+      boton.style.opacity = 100;
+      boton.disabled = false;
+    }
+    alert(`Reiniciaste los intentos, el numero a divinar era ${computadora}, ahora se seleccionara uno nuevo`)
+    computadora = Math.floor(Math.random() * (100 + 1));
+    intentos = 6;
+    document.getElementById('intentos').innerHTML = intentos;
+};
+
+
+ 
